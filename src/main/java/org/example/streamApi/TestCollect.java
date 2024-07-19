@@ -136,7 +136,7 @@ public class TestCollect {
     }
 
 
-    //  groupingBy  сгрупировать по возрасту до 25, после 25-40, и после 40
+    //  groupingBy  сгрупировать по возрасту 
     public static Map<Integer,List<Employee>> groupingOfAge(List<Employee> employeeList) {
 
         return  employeeList.stream().collect(Collectors.groupingBy(Employee::getAge));
