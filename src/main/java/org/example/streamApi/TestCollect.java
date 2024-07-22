@@ -74,18 +74,18 @@ public class TestCollect {
 //        System.out.println(averaginSaleryGroupingByDepartment(allEmployeeList));//
 
 
+//т.к. Employee не имплементирует компаратор, то в мапу ключом просто так нельзя добавить
+        Comparator <Employee> comparator = Comparator.comparing(employee6 -> employee.getName());
+        TreeMap<Employee, String> map = new TreeMap<>(comparator);
+        map.put(employee1, "test");
 
-//        Comparator <Employee> comparator = Comparator.comparing(employee6 -> employee.getName());
-//        TreeMap<Employee, String> map = new TreeMap<>(comparator);
-//        map.put(employee1, "test");
-
-//        List<String> list = Stream.of("one", "two").toList();
-//        int sum = Stream.of("one", "two").mapToInt(s -> s.length()).sum();
+        List<String> list = Stream.of("one", "two").toList();
+        int sum = Stream.of("one", "two").mapToInt(s -> s.length()).sum();
 
     }
 
 
-    //todo
+//    //todo
 ////    Расчет средней зарплаты для данной должности"
 //    public static Map<String,Double> averaginSaleryGroupingByDepartment(List<Employee> employeeList) {
 //
