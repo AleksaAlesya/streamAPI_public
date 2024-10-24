@@ -8,6 +8,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Collections.emptyList;
 import static java.util.Collections.nCopies;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
@@ -85,30 +86,30 @@ public class TestCollect {
     }
 
 
-//    //todo
+////    //todo
 ////    Расчет средней зарплаты для данной должности"
 //    public static Map<String,Double> averaginSaleryGroupingByDepartment(List<Employee> employeeList) {
 //
+//// Не то что надо по методу, средний возраст расчитывает
+//    employeeList.stream()
+//                .collect(Collectors.groupingBy(e->e.getPosition().name(),Collectors.averagingInt(Employee::getAge)));
 //
-//        Map<String, Double> map5 = employeeList.stream()
-//                .collect(Collectors.groupingBy(Employee::getPosition,
-//                        Collectors.averagingInt(Employee::getSalary)));
 //
 //        return employeeList.stream()
-//                .collect(Collectors.groupingBy(employee -> employee.getPosition().name(),
-//                        Collectors.averagingInt(Employee::getSalary)));
+//                .collect(Collectors.groupingBy(e ->e.getPosition().name(),Collectors.mapping(Collectors.averagingInt(Employee::getSalary))));
 //    }
 
 
 
-//// Группировка списка рабочих по их должности, рабочие представлены только именами единой строкой
-//public  static Map<String, String> groupingByDepartmentEmployeeString(List<Employee> employeeList){
-//               return employeeList.stream()
-//                       .collect(Collectors.groupingBy(employee -> employee.getPosition().name(),
-//                               Collectors.mapping(Employee::getName),
-//                               Collectors.joining(", ", "{","}")));
-//
-//    }
+// Группировка списка рабочих по их должности, рабочие представлены только именами единой строкой
+public  static Map<String, String> groupingByDepartmentEmployeeString(List<Employee> employeeList){
+
+               return employeeList.stream()
+                       .collect(Collectors.groupingBy(employee -> employee.getPosition().name(),
+                               Collectors.mapping(Employee::getName,
+                               Collectors.joining(", ", "{","}"))));
+
+    }
 
 
 

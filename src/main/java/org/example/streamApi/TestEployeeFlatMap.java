@@ -2,7 +2,10 @@ package org.example.streamApi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,11 +36,16 @@ public class TestEployeeFlatMap {
         departmentList.stream().
                 flatMap(d->d.getEmployeeListOnDepartment().stream()).
                 forEach(n-> System.out.println(n.getName()+" "+ n.getLastName()));
-        System.out.println(departmentList.stream().flatMap(d->d.getEmployeeListOnDepartment().stream()).count());
+        System.out.println(departmentList.stream().mapToLong(d->d.getEmployeeListOnDepartment().size()).sum());
 
+//   Map<String,String> hashMap = allEmployee.stream().collect(Collectors.toMap(Employee::getName,Employee::getLastName)).
 
+List <String> list = allEmployee.stream().map(m->
+m.getName()+ " " + m.getLastName()).peek(System.out::println).toList();
 
-
+        List <String> list1 = allEmployee.stream().map(e->e.getName().toUpperCase()).peek((e) -> System.out.print("!" + e+ " ")).toList();
+        System.out.println();
+        System.out.println(list1);
 
     }
 }
